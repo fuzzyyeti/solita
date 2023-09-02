@@ -216,8 +216,8 @@ export type ShankIdl = Idl & {
 export type ShankIdlInstruction = IdlInstruction & {
   accounts: IdlInstructionAccountWithDesc[]
   discriminant: {
-    type: IdlType
-    value: number
+    type: object
+    value: number | number[]
   }
 }
 export type IdlInstructionAccountWithDesc = IdlInstructionAccount & {

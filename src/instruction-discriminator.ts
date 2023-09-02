@@ -1,7 +1,7 @@
 import { TypeMapper } from './type-mapper'
 import {
   IdlInstruction,
-  IdlInstructionArg,
+  IdlInstructionArg, IdlType,
   isShankIdlInstruction,
 } from './types'
 import {
@@ -25,7 +25,8 @@ export class InstructionDiscriminator {
 
   getField(): IdlInstructionArg {
     if (isShankIdlInstruction(this.ix)) {
-      const ty = this.ix.discriminant.type
+      const ty = this.mapStringToIdlType(this.ix.discriminant.type);
+
       this.typeMapper.assertBeetSupported(
         ty,
         `instruction ${this.ix.name} discriminant field`
@@ -39,12 +40,24 @@ export class InstructionDiscriminator {
   renderType(): string {
     return isShankIdlInstruction(this.ix)
       ? this.typeMapper.map(
-          this.ix.discriminant.type,
+          this.mapStringToIdlType(this.ix.discriminant.type),
           `instruction ${this.ix.name} discriminant type`
         )
       : anchorDiscriminatorType(
           this.typeMapper,
           `instruction ${this.ix.name} discriminant type`
         )
+  }
+
+  mapStringToIdlType(rawTy: object): IdlType {
+    let ty: IdlType
+    if(JSON.stringify(rawTy) === '"u8"'){
+      ty = "u8"
+    } else if(JSON.stringify(rawTy) === '{"array":["u8",8]}'){
+      ty = "FixedSizeArray"
+    } else {
+      throw new Error(`Unsupported type ${rawTy} when parsing discriminant for instruction ${this.ix.name}`);
+    }
+    return ty
   }
 }
