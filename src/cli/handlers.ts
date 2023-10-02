@@ -59,6 +59,7 @@ export function handleShank(
   const spawnOpts: SpawnOptionsWithoutStdio = {
     cwd: programDir,
   }
+  console.log("Handling Shank")
   const rustbinConfig: RustbinConfig = {
     rootDir: binaryInstallDir,
     binaryName: 'shank',
@@ -89,6 +90,7 @@ async function handle(
 ) {
   const { programName, idlDir, sdkDir } = config
 
+  console.log("rustbinConfig", JSON.stringify(rustbinConfig));
   const { fullPathToBinary, binVersion, libVersion }: RustbinMatchReturn =
     await rustbinMatch(rustbinConfig, confirmAutoMessageLog)
 

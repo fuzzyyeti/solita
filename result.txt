@@ -1,0 +1,1190 @@
+yarn run v1.22.19
+$ yarn test:unit && yarn test:integration && yarn test:anchor:basic0 && yarn test:anchor:basic1 && yarn test:anchor:basic2 && yarn test:anchor:basic3 && yarn test:anchor:basic4
+$ tape dist/test/*.js
+TAP version 13
+# accountProviders: for zero accounts
+ok 1 renders no code
+# accountProviders: for one account
+ok 2 imports CollectionAccount
+ok 3 exports CollectionAccount
+# accountProviders: for three accounts
+ok 4 imports CollectionAccount
+ok 5 exports CollectionAccount
+ok 6 imports Data
+ok 7 exports Data
+ok 8 imports SolitaMaker
+ok 9 exports SolitaMaker
+# accounts: one field
+ok 10 no errors
+ok 11 no warnings
+ok 12 imports count
+ok 13 0 = [32m'@metaplex-foundation/beet'[39m
+ok 14 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 15 2 = [32m'@solana/web3.js'[39m
+# accounts: four fields
+ok 16 no errors
+ok 17 no warnings
+ok 18 imports count
+ok 19 0 = [32m'@metaplex-foundation/beet'[39m
+ok 20 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 21 2 = [32m'@solana/web3.js'[39m
+# accounts: pretty function for different types
+ok 22 no errors
+ok 23 no warnings
+ok 24 imports count
+ok 25 0 = [32m'@metaplex-foundation/beet'[39m
+ok 26 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 27 2 = [32m'@solana/web3.js'[39m
+ok 28 TypeScript matches: /auctionHouseFeeAccount: this.auctionHouseFeeAccount.toBase58\(\)/
+ok 29 TypeScript matches: /const x = <{ toNumber: \(\) => number }>this.someLargeNumber/
+# accounts: one field with custom serializers
+ok 30 no errors
+ok 31 no warnings
+ok 32 imports count
+ok 33 0 = [32m'@metaplex-foundation/beet'[39m
+ok 34 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 35 2 = [32m'@solana/web3.js'[39m
+ok 36 TypeScript matches: /import \* as customSerializer from '(\.\.\/){3}custom\/serializer'/i
+ok 37 TypeScript matches: /const resolvedSerialize = typeof serializer\.serialize === 'function'/
+ok 38 TypeScript matches: /\? serializer\.serialize\.bind\(serializer\)/
+ok 39 TypeScript matches: /\: auctionHouseBeet\.serialize\.bind\(auctionHouseBeet\)/i
+# accounts: one account with two fields, one has padding attr
+ok 40 no errors
+ok 41 no warnings
+ok 42 imports count
+ok 43 0 = [32m'@metaplex-foundation/beet'[39m
+ok 44 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 45 2 = [32m'@solana/web3.js'[39m
+ok 46 TypeScript matches: /readonly count\: number/
+ok 47 TypeScript matches: /count\: this\.count/
+ok 48 TypeScript matches: /args\.count/
+ok 49 TypeScript matches: /'padding', beet\.uniformFixedSizeArray\(beet\.u8, 3\)/
+ok 50 TypeScript matches: /padding\: Array\(3\).fill\(0\),/
+ok 51 TypeScript does not match: /readonly padding/
+ok 52 TypeScript does not match: /padding\: this\.padding/
+ok 53 TypeScript does not match: /args\.padding/
+# accounts: one account with two fields without implicit discriminator, one has padding attr
+ok 54 no errors
+ok 55 no warnings
+ok 56 imports count
+ok 57 0 = [32m'@metaplex-foundation/beet'[39m
+ok 58 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 59 2 = [32m'@solana/web3.js'[39m
+ok 60 TypeScript matches: /readonly count\: number/
+ok 61 TypeScript matches: /args\.count/
+ok 62 TypeScript matches: /count\: this\.count/
+ok 63 TypeScript matches: /'padding', beet\.uniformFixedSizeArray\(beet\.u8, 3\)/
+ok 64 TypeScript matches: /padding\: Array\(3\).fill\(0\),/
+ok 65 TypeScript does not match: /readonly padding/
+ok 66 TypeScript does not match: /padding\: this\.padding/
+ok 67 TypeScript does not match: /args\.padding/
+# accounts: one account with three fields, middle one has padding attr
+ok 68 no errors
+ok 69 no warnings
+ok 70 imports count
+ok 71 0 = [32m'@metaplex-foundation/beet'[39m
+ok 72 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 73 2 = [32m'@solana/web3.js'[39m
+ok 74 TypeScript matches: /readonly count\: number/
+ok 75 TypeScript matches: /readonly largerCount\: beet.bignum/
+ok 76 TypeScript matches: /args\.count/
+ok 77 TypeScript matches: /args\.largerCount/
+ok 78 TypeScript matches: /count\: this\.count/
+ok 79 TypeScript matches: /largerCount\: /
+ok 80 TypeScript matches: /'padding', beet\.uniformFixedSizeArray\(beet\.u8, 5\)/
+ok 81 TypeScript matches: /padding\: Array\(5\).fill\(0\),/
+ok 82 TypeScript does not match: /readonly padding/
+ok 83 TypeScript does not match: /padding\: this\.padding/
+ok 84 TypeScript does not match: /args\.padding/
+# accounts: one account with three fields, middle one has padding attr without implicitDiscriminator
+ok 85 no errors
+ok 86 no warnings
+ok 87 imports count
+ok 88 0 = [32m'@metaplex-foundation/beet'[39m
+ok 89 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 90 2 = [32m'@solana/web3.js'[39m
+ok 91 TypeScript matches: /readonly count\: number/
+ok 92 TypeScript matches: /readonly largerCount\: beet.bignum/
+ok 93 TypeScript matches: /args\.count/
+ok 94 TypeScript matches: /args\.largerCount/
+ok 95 TypeScript matches: /count\: this\.count/
+ok 96 TypeScript matches: /largerCount\: /
+ok 97 TypeScript matches: /'padding', beet\.uniformFixedSizeArray\(beet\.u8, 5\)/
+ok 98 TypeScript matches: /padding\: Array\(5\).fill\(0\),/
+ok 99 TypeScript does not match: /readonly padding/
+ok 100 TypeScript does not match: /padding\: this\.padding/
+ok 101 TypeScript does not match: /args\.padding/
+# ix: empty args
+ok 102 no errors
+ok 103 no warnings
+ok 104 imports count
+ok 105 0 = [32m'@metaplex-foundation/beet'[39m
+ok 106 1 = [32m'@solana/web3.js'[39m
+ok 107 TypeScript matches /programId = new web3\.PublicKey/
+# ix: empty args and empty accounts
+ok 108 no errors
+ok 109 no warnings
+ok 110 imports count
+ok 111 0 = [32m'@metaplex-foundation/beet'[39m
+ok 112 1 = [32m'@solana/web3.js'[39m
+ok 113 TypeScript matches /programId = new web3\.PublicKey/
+# ix: one arg
+ok 114 no errors
+ok 115 no warnings
+ok 116 imports count
+ok 117 0 = [32m'@metaplex-foundation/beet'[39m
+ok 118 1 = [32m'@solana/web3.js'[39m
+ok 119 TypeScript does not match: /anchorRemainingAccounts\?\: web3\.AccountMeta\[\]/
+# ix: two args
+ok 120 no errors
+ok 121 no warnings
+ok 122 imports count
+ok 123 0 = [32m'@metaplex-foundation/beet'[39m
+ok 124 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 125 2 = [32m'@solana/web3.js'[39m
+# ix: two accounts and two args
+ok 126 no errors
+ok 127 no warnings
+ok 128 imports count
+ok 129 0 = [32m'@metaplex-foundation/beet'[39m
+ok 130 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 131 2 = [32m'@solana/web3.js'[39m
+# ix: three accounts, two optional
+ok 132 no errors
+ok 133 no warnings
+ok 134 imports count
+ok 135 0 = [32m'@metaplex-foundation/beet'[39m
+ok 136 1 = [32m'@solana/web3.js'[39m
+ok 137 TypeScript matches /authority\: web3\.PublicKey/
+ok 138 TypeScript matches /useAuthorityRecord\?\: web3\.PublicKey/
+ok 139 TypeScript matches /burner\?\: web3\.PublicKey/
+ok 140 TypeScript matches /if \(accounts.useAuthorityRecord != null\)/
+ok 141 TypeScript matches /if \(accounts.burner != null\)/
+ok 142 TypeScript matches /if \(accounts.useAuthorityRecord == null\).+throw new Error/
+ok 143 TypeScript does not match: /pubkey\: accounts\.useAuthorityRecord \?\? programId,\n.+isWritable\: accounts\.useAuthorityRecord != null,\n.+isSigner\: false,/
+ok 144 TypeScript does not match: /pubkey\: accounts\.burner \?\? programId,\n.+isWritable\: false,\n.+isSigner\: false,/
+# ix: five accounts composed of two required, two optional and one required
+ok 145 no errors
+ok 146 no warnings
+ok 147 imports count
+ok 148 0 = [32m'@metaplex-foundation/beet'[39m
+ok 149 1 = [32m'@solana/web3.js'[39m
+ok 150 TypeScript matches /authority\: web3\.PublicKey/
+ok 151 TypeScript matches /metadata\: web3\.PublicKey/
+ok 152 TypeScript matches /useAuthorityRecord\?\: web3\.PublicKey/
+ok 153 TypeScript matches /burner\?\: web3\.PublicKey/
+ok 154 TypeScript matches /masterEdition\: web3\.PublicKey/
+ok 155 TypeScript matches /keys\.push\(\{\s+pubkey\: accounts\.useAuthorityRecord,/
+ok 156 TypeScript matches /keys\.push\(\{\s+pubkey\: accounts\.burner,/
+ok 157 TypeScript matches /keys\.push\(\{\s+pubkey\: accounts\.masterEdition,/
+ok 158 TypeScript does not match: /keys\.push\(\{\s+pubkey\: accounts\.authority,/
+ok 159 TypeScript does not match: /keys\.push\(\{\s+pubkey\: accounts\.metadata,/
+# ix: three accounts, two optional, defaultOptionalAccounts
+ok 160 no errors
+ok 161 no warnings
+ok 162 imports count
+ok 163 0 = [32m'@metaplex-foundation/beet'[39m
+ok 164 1 = [32m'@solana/web3.js'[39m
+ok 165 TypeScript matches /authority\: web3\.PublicKey/
+ok 166 TypeScript matches /useAuthorityRecord\?\: web3\.PublicKey/
+ok 167 TypeScript matches /burner\?\: web3\.PublicKey/
+ok 168 TypeScript matches /pubkey\: accounts\.useAuthorityRecord \?\? programId,\n.+isWritable\: accounts\.useAuthorityRecord != null,\n.+isSigner\: false,/
+ok 169 TypeScript matches /pubkey\: accounts\.burner \?\? programId,\n.+isWritable\: false,\n.+isSigner\: false,/
+ok 170 TypeScript does not match: /if \(accounts.useAuthorityRecord != null\)/
+ok 171 TypeScript does not match: /if \(accounts.burner != null\)/
+ok 172 TypeScript does not match: /if \(accounts.useAuthorityRecord == null\).+throw new Error/
+# ix: accounts render comments with and without desc
+ok 173 no errors
+ok 174 no warnings
+ok 175 imports count
+ok 176 0 = [32m'@metaplex-foundation/beet'[39m
+ok 177 1 = [32m'@solana/web3.js'[39m
+ok 178 TypeScript matches /@property .+signer.+ withoutDesc/
+ok 179 TypeScript matches /@property .+writable.+ withDesc Use Authority Record PDA If present the program Assumes a delegated use authority/
+# ix: empty args one system program account
+ok 180 no errors
+ok 181 no warnings
+ok 182 imports count
+ok 183 0 = [32m'@metaplex-foundation/beet'[39m
+ok 184 1 = [32m'@solana/web3.js'[39m
+ok 185 TypeScript matches /programId = new web3\.PublicKey\('testprogram'\)/
+ok 186 TypeScript matches /pubkey\: accounts\.systemProgram \?\? web3\.SystemProgram\.programId/
+ok 187 TypeScript does not match: /pubkey\: accounts\.programId/
+# ix: with args one system program account and programId
+ok 188 no errors
+ok 189 no warnings
+ok 190 imports count
+ok 191 0 = [32m'@metaplex-foundation/beet'[39m
+ok 192 1 = [32m'@solana/web3.js'[39m
+ok 193 TypeScript matches /programId = new web3\.PublicKey\('testprogram'\)/
+ok 194 TypeScript matches /pubkey\: accounts\.programId/
+# ix: empty args one system program account + one optional rent account
+ok 195 no errors
+ok 196 no warnings
+ok 197 imports count
+ok 198 0 = [32m'@metaplex-foundation/beet'[39m
+ok 199 1 = [32m'@solana/web3.js'[39m
+ok 200 TypeScript matches /programId = new web3\.PublicKey\('testprogram'\)/
+ok 201 TypeScript matches /pubkey\: accounts.rent,/
+ok 202 TypeScript does not match: /pubkey\: accounts\.programId/
+# ix: one arg rendering remaining accounts
+ok 203 no errors
+ok 204 no warnings
+ok 205 imports count
+ok 206 0 = [32m'@metaplex-foundation/beet'[39m
+ok 207 1 = [32m'@solana/web3.js'[39m
+ok 208 TypeScript matches /anchorRemainingAccounts\?\: web3\.AccountMeta\[\]/
+# ix: empty args rendering remaining accounts
+ok 209 no errors
+ok 210 no warnings
+ok 211 imports count
+ok 212 0 = [32m'@metaplex-foundation/beet'[39m
+ok 213 1 = [32m'@solana/web3.js'[39m
+ok 214 TypeScript matches /programId = new web3\.PublicKey/
+ok 215 TypeScript matches /anchorRemainingAccounts\?\: web3\.AccountMeta\[\]/
+# ix: empty args and empty accounts
+ok 216 no errors
+ok 217 no warnings
+ok 218 imports count
+ok 219 0 = [32m'@metaplex-foundation/beet'[39m
+ok 220 1 = [32m'@solana/web3.js'[39m
+ok 221 TypeScript matches /programId = new web3\.PublicKey/
+ok 222 TypeScript does not match: /anchorRemainingAccounts\?\: web3\.AccountMeta\[\]/
+# types: with one field not using lib types
+ok 223 no errors
+ok 224 no warnings
+ok 225 imports count
+ok 226 0 = [32m'@metaplex-foundation/beet'[39m
+# types: with three, two lib types
+ok 227 no errors
+ok 228 no warnings
+ok 229 imports count
+ok 230 0 = [32m'@metaplex-foundation/beet'[39m
+# types: with four fields, one referring to other defined type
+ok 231 no errors
+ok 232 no warnings
+ok 233 imports count
+ok 234 0 = [32m'@metaplex-foundation/beet'[39m
+# types: enum with inline data
+ok 235 no errors
+ok 236 no warnings
+ok 237 imports count
+ok 238 0 = [32m'@metaplex-foundation/beet'[39m
+ok 239 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 240 2 = [32m'@solana/web3.js'[39m
+# types: data enum with unnamed fields variant
+ok 241 no errors
+ok 242 no warnings
+ok 243 imports count
+ok 244 0 = [32m'@metaplex-foundation/beet'[39m
+# types: data enum with unnamed and named fields variants
+ok 245 no errors
+ok 246 no warnings
+ok 247 imports count
+ok 248 0 = [32m'@metaplex-foundation/beet'[39m
+ok 249 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 250 2 = [32m'@solana/web3.js'[39m
+# types: enum with only scalar variants
+--------- <TypeScript> --------
+import * as beet from '@metaplex-foundation/beet';
+/**
+ * @category enums
+ * @category generated
+ */
+export enum CleanUpActions {
+  Uno,
+  Dos    
+}
+
+/**
+ * @category userTypes
+ * @category generated
+ */
+export const cleanUpActionsBeet = beet.fixedScalarEnum(CleanUpActions) as beet.FixedSizeBeet<CleanUpActions, CleanUpActions>
+--------- </TypeScript> --------
+ok 251 no errors
+ok 252 no warnings
+ok 253 imports count
+ok 254 0 = [32m'@metaplex-foundation/beet'[39m
+# types: enum data and scalar variants
+ok 255 no errors
+ok 256 no warnings
+ok 257 imports count
+ok 258 0 = [32m'@metaplex-foundation/beet'[39m
+# types: data enum with custom types
+ok 259 no errors
+ok 260 no warnings
+ok 261 imports count
+ok 262 0 = [32m'@metaplex-foundation/beet'[39m
+# types: BTreeMap<u32, u32>
+ok 263 no errors
+ok 264 no warnings
+ok 265 imports count
+ok 266 0 = [32m'@metaplex-foundation/beet'[39m
+# types: HashMap<string, AddCardToPackArgs>
+ok 267 no errors
+ok 268 no warnings
+ok 269 imports count
+ok 270 0 = [32m'@metaplex-foundation/beet'[39m
+# types: Vec<HashMap<string, u32>>
+--------- <TypeScript> --------
+import * as beet from '@metaplex-foundation/beet';
+export type ProvingProcess = {
+  maps: Map<string, number>[]
+}
+
+/**
+ * @category userTypes
+ * @category generated
+ */
+export const provingProcessBeet = new beet.FixableBeetArgsStruct<ProvingProcess>(
+  [
+    ['maps', beet.array(beet.map(beet.utf8String, beet.u32))]
+  ],
+  'ProvingProcess'
+)
+--------- </TypeScript> --------
+ok 271 no errors
+ok 272 no warnings
+ok 273 imports count
+ok 274 0 = [32m'@metaplex-foundation/beet'[39m
+# type-mapper: primitive types - numbers
+ok 275 'i8' maps to 'number' TypeScript type
+ok 276 'u32' maps to 'number' TypeScript type
+ok 277 'i16' maps to 'number' TypeScript type
+ok 278 did not use fixable serde
+ok 279 used no local imports
+ok 280 'i8' maps to 'beet.i8' serde
+ok 281 'u32' maps to 'beet.u32' serde
+ok 282 'i16' maps to 'beet.i16' serde
+ok 283 spok: serdePackagesUsed
+ok 284 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 285 did not use fixable serde
+ok 286 used no local imports
+# type-mapper: primitive types - bignums
+ok 287 'i64' maps to 'beet.bignum' TypeScript type
+ok 288 'u128' maps to 'beet.bignum' TypeScript type
+ok 289 'i256' maps to 'beet.bignum' TypeScript type
+ok 290 'u512' maps to 'beet.bignum' TypeScript type
+ok 291 spok: serdePackagesUsed
+ok 292 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 293 did not use fixable serde
+ok 294 used no local imports
+ok 295 'i64' maps to 'beet.i64' serde
+ok 296 'u128' maps to 'beet.u128' serde
+ok 297 'i256' maps to 'beet.i256' serde
+ok 298 'u512' maps to 'beet.u512' serde
+ok 299 spok: serdePackagesUsed
+ok 300 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 301 did not use fixable serde
+# type-mapper: primitive types - string
+ok 302 string type
+ok 303 no serdePackagesUsed
+ok 304 used no local imports
+ok 305 string serde
+ok 306 spok: serdePackagesUsed
+ok 307 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 308 used fixable serde
+# type-mapper: enums scalar
+# +++ not providing name when mapping type and serde
+ok 309 The input matched the regular expression /provide name for enum types/i. Input: 'Need to provide name for enum types'
+ok 310 The input matched the regular expression /provide name for enum types/i. Input: 'Need to provide name for enum types'
+# +++ providing name when mapping type and serde
+ok 311 name as type
+ok 312 no serdePackagesUsed
+ok 313 spok: scalarEnumsUsed
+ok 314 ·· spok: scalarEnumsUsed.0
+ok 315 ·· ·· 0 = [32m'MembershipModel'[39m
+ok 316 ·· ·· 1 = [ [32m'Wallet'[39m, [32m'Token'[39m, [32m'NFT'[39m ]
+ok 317 used no local imports
+ok 318 serde
+ok 319 spok: serdePackagesUsed
+ok 320 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 321 spok: scalarEnumsUsed
+ok 322 ·· spok: scalarEnumsUsed.0
+ok 323 ·· ·· 0 = [32m'MembershipModel'[39m
+ok 324 ·· ·· 1 = [ [32m'Wallet'[39m, [32m'Token'[39m, [32m'NFT'[39m ]
+ok 325 used no local imports
+# type-mapper: composite types - option<number | bignum>
+ok 326 option<u16>
+ok 327 spok: serdePackagesUsed
+ok 328 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 329 option<u16> serde
+ok 330 spok: serdePackagesUsed
+ok 331 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 332 used no local imports
+ok 333 used fixable serde
+ok 334 option<u64>
+ok 335 spok: serdePackagesUsed
+ok 336 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 337 option<u64> serde
+ok 338 spok: serdePackagesUsed
+ok 339 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 340 used no local imports
+ok 341 used fixable serde
+# type-mapper: composite types - vec<number | bignum>
+ok 342 vec<u16>
+ok 343 no serdePackagesUsed
+ok 344 vec<u16> serde
+ok 345 spok: serdePackagesUsed
+ok 346 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 347 used no local imports
+ok 348 used fixable serde
+ok 349 vec<u64>
+ok 350 spok: serdePackagesUsed
+ok 351 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 352 vec<u64> serde
+ok 353 spok: serdePackagesUsed
+ok 354 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 355 used no local imports
+ok 356 used fixable serde
+# type-mapper: composite types - array<number>
+ok 357 array<u16>(4)
+ok 358 no serdePackagesUsed
+ok 359 array<u16>(4) serde
+ok 360 spok: serdePackagesUsed
+ok 361 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 362 did not use fixable serde
+# type-mapper: composite types - user defined
+ok 363 should be strictly equal
+ok 364 no serde packages used
+ok 365 spok: local imports
+ok 366 ·· spok: local imports.0
+ok 367 ·· ·· 0 = [32m'/module/of/config-data.ts'[39m
+ok 368 ·· ·· 1 = Set(1) { [32m'ConfigData'[39m }
+ok 369 should be strictly equal
+ok 370 no serde packages used
+ok 371 spok: local imports
+ok 372 ·· spok: local imports.0
+ok 373 ·· ·· 0 = [32m'/module/of/config-data.ts'[39m
+ok 374 ·· ·· 1 = Set(1) { [32m'configDataBeet'[39m }
+ok 375 did not use fixable serde
+# type-mapper: type extensions - publicKey
+ok 376 publicKey
+ok 377 spok: serdePackagesUsed
+ok 378 ·· 0 = [32m'@solana/web3.js'[39m
+ok 379 publicKey serde
+ok 380 spok: serdePackagesUsed
+ok 381 ·· 0 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 382 did not use fixable serde
+# type-mapper: composite with type extensions - publicKey
+ok 383 option<publicKey>
+ok 384 spok: serdePackagesUsed
+ok 385 ·· 0 = [32m'@solana/web3.js'[39m
+ok 386 ·· 1 = [32m'@metaplex-foundation/beet'[39m
+ok 387 option<publicKey> serde
+ok 388 spok: serdePackagesUsed
+ok 389 ·· 0 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 390 ·· 1 = [32m'@metaplex-foundation/beet'[39m
+ok 391 used no local imports
+ok 392 used fixable serde
+# type-mapper: composite types multilevel - option<option<number>>
+ok 393 should be strictly equal
+ok 394 spok: serdePackagesUsed
+ok 395 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 396 should be strictly equal
+ok 397 spok: serdePackagesUsed
+ok 398 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 399 used no local imports
+ok 400 used fixable serde
+# type-mapper: composite types multilevel - option<option<publicKey>>
+ok 401 should be strictly equal
+ok 402 spok: serdePackagesUsed
+ok 403 ·· 0 = [32m'@solana/web3.js'[39m
+ok 404 ·· 1 = [32m'@metaplex-foundation/beet'[39m
+ok 405 should be strictly equal
+ok 406 spok: serdePackagesUsed
+ok 407 ·· 0 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 408 ·· 1 = [32m'@metaplex-foundation/beet'[39m
+ok 409 used no local imports
+ok 410 used fixable serde
+# type-mapper: composite types multilevel - vec<option<ConfigData>>
+ok 411 should be strictly equal
+ok 412 spok: serdePackagesUsed
+ok 413 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 414 spok: local imports
+ok 415 ·· spok: local imports.0
+ok 416 ·· ·· 0 = [32m'/module/of/config-data.ts'[39m
+ok 417 ·· ·· 1 = Set(1) { [32m'ConfigData'[39m }
+ok 418 should be strictly equal
+ok 419 spok: serdePackagesUsed
+ok 420 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 421 spok: local imports
+ok 422 ·· spok: local imports.0
+ok 423 ·· ·· 0 = [32m'/module/of/config-data.ts'[39m
+ok 424 ·· ·· 1 = Set(1) { [32m'configDataBeet'[39m }
+ok 425 used fixable serde
+# type-mapper: serde fields
+# +++ u16 field only
+ok 426 spok: 0
+ok 427 ·· name = [32m'u16'[39m
+ok 428 ·· type = [32m'beet.u16'[39m
+ok 429 spok: serdePackagesUsed
+ok 430 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 431 did not use fixable serde
+# +++ optionPublicKey field only
+ok 432 spok: 0
+ok 433 ·· name = [32m'optionPublicKey'[39m
+ok 434 ·· type = [32m'beet.coption(beetSolana.publicKey)'[39m
+ok 435 spok: serdePackagesUsed
+ok 436 ·· 0 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 437 ·· 1 = [32m'@metaplex-foundation/beet'[39m
+ok 438 used fixable serde
+# +++ u16, optionPublicKey, configData and vecOptionConfigData fields
+ok 439 spok: 0
+ok 440 ·· name = [32m'u16'[39m
+ok 441 ·· type = [32m'beet.u16'[39m
+ok 442 spok: 1
+ok 443 ·· name = [32m'optionPublicKey'[39m
+ok 444 ·· type = [32m'beet.coption(beetSolana.publicKey)'[39m
+ok 445 spok: 2
+ok 446 ·· name = [32m'configData'[39m
+ok 447 ·· type = [32m'configDataBeet'[39m
+ok 448 spok: 3
+ok 449 ·· name = [32m'vecOptionConfigData'[39m
+ok 450 ·· type = [32m'beet.array(beet.coption(configDataBeet))'[39m
+ok 451 spok: serdePackagesUsed
+ok 452 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 453 ·· 1 = [32m'@metaplex-foundation/beet-solana'[39m
+ok 454 spok: local imports
+ok 455 ·· spok: local imports.0
+ok 456 ·· ·· 0 = [32m'/module/of/config-data.ts'[39m
+ok 457 ·· ·· 1 = Set(1) { [32m'configDataBeet'[39m }
+ok 458 used fixable serde
+# type-mapper: imports for serde packages used 
+# +++ imports for three packages
+ok 459 0 = [32m"import * as web3 from '@solana/web3.js';"[39m
+ok 460 1 = [32m"import * as beet from '@metaplex-foundation/beet';"[39m
+ok 461 2 = [32m"import * as beetSolana from '@metaplex-foundation/beet-solana';"[39m
+# +++ imports for one package
+ok 462 0 = [32m"import * as beet from '@metaplex-foundation/beet';"[39m
+# type-mapper: user defined - aliased
+# +++ when alias not provided
+ok 463 throws unknown type error
+# +++ when alias provided
+ok 464 should be strictly equal
+ok 465 should be strictly equal
+ok 466 spok: serdePackagesUsed
+ok 467 ·· 0 = [32m'@metaplex-foundation/beet'[39m
+ok 468 did not use local imports
+ok 469 did not use fixable serde
+# type-mapper: tuples top level
+# fixed
+ok 470 (u32,u32,u32) maps to '[number, number, number]' TypeScript type
+ok 471 (i16,i16,i16) maps to '[number, number, number]' TypeScript type
+ok 472 (u16,i64,u128) maps to '[number, beet.bignum, beet.bignum]' TypeScript type
+ok 473 (u16,[object Object]) maps to '[number, ScalarEnum]' TypeScript type
+ok 474 did not use fixable serde
+ok 475 used no local imports
+ok 476 beet.fixedSizeTuple([beet.u32, beet.u32, beet.u32]) maps to beet.fixedSizeTuple([beet.u32, beet.u32, beet.u32]) serde
+ok 477 beet.fixedSizeTuple([beet.i16, beet.i16, beet.i16]) maps to beet.fixedSizeTuple([beet.i16, beet.i16, beet.i16]) serde
+ok 478 beet.fixedSizeTuple([beet.u16, beet.i64, beet.u128]) maps to beet.fixedSizeTuple([beet.u16, beet.i64, beet.u128]) serde
+ok 479 beet.fixedSizeTuple([beet.u16, beet.fixedScalarEnum(ScalarEnum)]) maps to beet.fixedSizeTuple([beet.u16, beet.fixedScalarEnum(ScalarEnum)]) serde
+ok 480 did not use fixable serde
+ok 481 used no local imports
+# fixable
+ok 482 (string,[object Object]) maps to '[string, number[]]' TypeScript type
+ok 483 (string,string,u8,[object Object],[object Object]) maps to '[string, string, number, number[], beet.COption<number>]' TypeScript type
+ok 484 did not use fixable serde
+ok 485 used no local imports
+ok 486 string,[object Object] maps to beet.tuple([beet.utf8String, beet.array(beet.u8)]) serde
+ok 487 string,string,u8,[object Object],[object Object] maps to beet.tuple([beet.utf8String, beet.utf8String, beet.u8, beet.array(beet.i32), beet.coption(beet.i32)]) serde
+ok 488 used fixable serde
+ok 489 used no local imports
+# type-mapper: tuples nested
+ok 490 ({ vec: { tuple: [ [32m'i64'[39m, [32m'u16'[39m ] } }) maps to '[beet.bignum, number][]' TypeScript type
+ok 491 ({ vec: { tuple: [ [32m'string'[39m, [32m'u8'[39m ] } }) maps to '[string, number][]' TypeScript type
+ok 492 ({ option: { tuple: [ [32m'u8'[39m, [32m'i8'[39m, [32m'u16'[39m, [32m'i128'[39m ] } }) maps to 'beet.COption<[number, number, number, beet.bignum]>' TypeScript type
+ok 493 did not use fixable serde
+ok 494 used no local imports
+ok 495 { vec: { tuple: [ [32m'i64'[39m, [32m'u16'[39m ] } } maps to beet.array(beet.fixedSizeTuple([beet.i64, beet.u16])) serde
+ok 496 { vec: { tuple: [ [32m'string'[39m, [32m'u8'[39m ] } } maps to beet.array(beet.tuple([beet.utf8String, beet.u8])) serde
+ok 497 { option: { tuple: [ [32m'u8'[39m, [32m'i8'[39m, [32m'u16'[39m, [32m'i128'[39m ] } } maps to beet.coption(beet.fixedSizeTuple([beet.u8, beet.i8, beet.u16, beet.i128])) serde
+ok 498 used fixable serde
+ok 499 used no local imports
+
+1..499
+# tests 499
+# pass  499
+
+# ok
+
+$ tape dist/test/integration/*.js
+TAP version 13
+# renders type correct SDK for anchor-optional
+Writing instructions to directory: dist/test/utils/output/anchor-optional/generated/instructions
+Writing accounts to directory: dist/test/utils/output/anchor-optional/generated/accounts
+Writing errors to directory: dist/test/utils/output/anchor-optional/generated/errors
+ok 1 Verifying types with tsc
+# +++ Syntactically checking index.ts inside anchor-optional
+# +++ Syntactically checking errors/index.ts inside anchor-optional
+# +++ Syntactically checking instructions/close.ts inside anchor-optional
+# +++ Syntactically checking instructions/index.ts inside anchor-optional
+# +++ Syntactically checking instructions/initialize.ts inside anchor-optional
+# +++ Syntactically checking instructions/realloc.ts inside anchor-optional
+# +++ Syntactically checking instructions/update.ts inside anchor-optional
+# +++ Syntactically checking accounts/DataAccount.ts inside anchor-optional
+# +++ Syntactically checking accounts/index.ts inside anchor-optional
+# +++ Syntactically checking accounts/DataPda.ts inside anchor-optional
+# +++ Running index.ts inside anchor-optional
+# +++ Running accounts/index.ts inside anchor-optional
+# +++ Running errors/index.ts inside anchor-optional
+# +++ Running instructions/index.ts inside anchor-optional
+# renders type correct SDK for ah-1.1.4-anchor-0.24.2
+Writing instructions to directory: dist/test/utils/output/ah-1.1.4-anchor-0.24.2/generated/instructions
+Writing accounts to directory: dist/test/utils/output/ah-1.1.4-anchor-0.24.2/generated/accounts
+Writing types to directory: dist/test/utils/output/ah-1.1.4-anchor-0.24.2/generated/types
+Writing errors to directory: dist/test/utils/output/ah-1.1.4-anchor-0.24.2/generated/errors
+ok 2 Verifying types with tsc
+# +++ Syntactically checking index.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking accounts/AuctionHouse.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking accounts/BidReceipt.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking accounts/ListingReceipt.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking accounts/PurchaseReceipt.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking accounts/index.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking errors/index.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking types/BidType.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking types/index.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/buy.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/cancel.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/cancelBidReceipt.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/closeEscrowAccount.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/cancelListingReceipt.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/createAuctionHouse.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/deposit.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/executeSale.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/index.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/printBidReceipt.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/printListingReceipt.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/printPurchaseReceipt.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/publicBuy.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/sell.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/updateAuctionHouse.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/withdraw.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/withdrawFromFee.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Syntactically checking instructions/withdrawFromTreasury.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Running index.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Running errors/index.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Running accounts/index.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Running instructions/index.ts inside ah-1.1.4-anchor-0.24.2
+# +++ Running types/index.ts inside ah-1.1.4-anchor-0.24.2
+# renders type correct SDK for auction_house
+Writing instructions to directory: dist/test/utils/output/auction_house/generated/instructions
+Writing accounts to directory: dist/test/utils/output/auction_house/generated/accounts
+Writing errors to directory: dist/test/utils/output/auction_house/generated/errors
+ok 3 Verifying types with tsc
+# +++ Syntactically checking index.ts inside auction_house
+# +++ Syntactically checking accounts/AuctionHouse.ts inside auction_house
+# +++ Syntactically checking accounts/index.ts inside auction_house
+# +++ Syntactically checking errors/index.ts inside auction_house
+# +++ Syntactically checking instructions/buy.ts inside auction_house
+# +++ Syntactically checking instructions/cancel.ts inside auction_house
+# +++ Syntactically checking instructions/createAuctionHouse.ts inside auction_house
+# +++ Syntactically checking instructions/deposit.ts inside auction_house
+# +++ Syntactically checking instructions/executeSale.ts inside auction_house
+# +++ Syntactically checking instructions/index.ts inside auction_house
+# +++ Syntactically checking instructions/sell.ts inside auction_house
+# +++ Syntactically checking instructions/updateAuctionHouse.ts inside auction_house
+# +++ Syntactically checking instructions/withdraw.ts inside auction_house
+# +++ Syntactically checking instructions/withdrawFromTreasury.ts inside auction_house
+# +++ Syntactically checking instructions/withdrawFromFee.ts inside auction_house
+# +++ Running index.ts inside auction_house
+# +++ Running accounts/index.ts inside auction_house
+# +++ Running errors/index.ts inside auction_house
+# +++ Running instructions/index.ts inside auction_house
+# renders type correct SDK for fanout
+Writing instructions to directory: dist/test/utils/output/fanout/generated/instructions
+Writing accounts to directory: dist/test/utils/output/fanout/generated/accounts
+Writing types to directory: dist/test/utils/output/fanout/generated/types
+Writing errors to directory: dist/test/utils/output/fanout/generated/errors
+ok 4 Verifying types with tsc
+# +++ Syntactically checking index.ts inside fanout
+# +++ Syntactically checking errors/index.ts inside fanout
+# +++ Syntactically checking accounts/Fanout.ts inside fanout
+# +++ Syntactically checking accounts/FanoutMembershipMintVoucher.ts inside fanout
+# +++ Syntactically checking accounts/FanoutMembershipVoucher.ts inside fanout
+# +++ Syntactically checking accounts/FanoutMint.ts inside fanout
+# +++ Syntactically checking accounts/index.ts inside fanout
+# +++ Syntactically checking instructions/addMemberNft.ts inside fanout
+# +++ Syntactically checking instructions/addMemberToken.ts inside fanout
+# +++ Syntactically checking instructions/addMemberWallet.ts inside fanout
+# +++ Syntactically checking instructions/distributeForNft.ts inside fanout
+# +++ Syntactically checking instructions/index.ts inside fanout
+# +++ Syntactically checking instructions/init.ts inside fanout
+# +++ Syntactically checking instructions/initForMint.ts inside fanout
+# +++ Syntactically checking instructions/stakeTokenMember.ts inside fanout
+# +++ Syntactically checking instructions/unstakeTokenMember.ts inside fanout
+# +++ Syntactically checking types/AddMemberArgs.ts inside fanout
+# +++ Syntactically checking types/DistributeMemberArgs.ts inside fanout
+# +++ Syntactically checking types/InitializeFanoutArgs.ts inside fanout
+# +++ Syntactically checking types/MembershipModel.ts inside fanout
+# +++ Syntactically checking types/index.ts inside fanout
+# +++ Running index.ts inside fanout
+# +++ Running errors/index.ts inside fanout
+# +++ Running accounts/index.ts inside fanout
+# +++ Running instructions/index.ts inside fanout
+# +++ Running types/index.ts inside fanout
+# renders type correct SDK for gumdrop
+Writing instructions to directory: dist/test/utils/output/gumdrop/generated/instructions
+Writing accounts to directory: dist/test/utils/output/gumdrop/generated/accounts
+Writing types to directory: dist/test/utils/output/gumdrop/generated/types
+Writing errors to directory: dist/test/utils/output/gumdrop/generated/errors
+ok 5 Verifying types with tsc
+# +++ Syntactically checking index.ts inside gumdrop
+# +++ Syntactically checking accounts/CandyMachine.ts inside gumdrop
+# +++ Syntactically checking accounts/ClaimCount.ts inside gumdrop
+# +++ Syntactically checking accounts/MerkleDistributor.ts inside gumdrop
+# +++ Syntactically checking accounts/ClaimStatus.ts inside gumdrop
+# +++ Syntactically checking accounts/index.ts inside gumdrop
+# +++ Syntactically checking errors/index.ts inside gumdrop
+# +++ Syntactically checking instructions/claim.ts inside gumdrop
+# +++ Syntactically checking instructions/claimCandy.ts inside gumdrop
+# +++ Syntactically checking instructions/claimEdition.ts inside gumdrop
+# +++ Syntactically checking instructions/closeDistributor.ts inside gumdrop
+# +++ Syntactically checking instructions/closeDistributorTokenAccount.ts inside gumdrop
+# +++ Syntactically checking instructions/index.ts inside gumdrop
+# +++ Syntactically checking instructions/newDistributor.ts inside gumdrop
+# +++ Syntactically checking types/CandyMachineData.ts inside gumdrop
+# +++ Syntactically checking types/index.ts inside gumdrop
+# +++ Running index.ts inside gumdrop
+# +++ Running accounts/index.ts inside gumdrop
+# +++ Running types/index.ts inside gumdrop
+# +++ Running instructions/index.ts inside gumdrop
+# +++ Running errors/index.ts inside gumdrop
+# renders type correct SDK for mpl_token_metadata
+Writing instructions to directory: dist/test/utils/output/mpl_token_metadata/generated/instructions
+Writing accounts to directory: dist/test/utils/output/mpl_token_metadata/generated/accounts
+Writing types to directory: dist/test/utils/output/mpl_token_metadata/generated/types
+Writing errors to directory: dist/test/utils/output/mpl_token_metadata/generated/errors
+ok 6 Verifying types with tsc
+# +++ Syntactically checking index.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/CollectionAuthorityRecord.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/Edition.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/EditionMarker.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/MasterEditionV1.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/Metadata.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/MasterEditionV2.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/ReservationListV1.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/ReservationListV2.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/UseAuthorityRecord.ts inside mpl_token_metadata
+# +++ Syntactically checking accounts/index.ts inside mpl_token_metadata
+# +++ Syntactically checking errors/index.ts inside mpl_token_metadata
+# +++ Syntactically checking types/ApproveUseAuthorityArgs.ts inside mpl_token_metadata
+# +++ Syntactically checking types/Collection.ts inside mpl_token_metadata
+# +++ Syntactically checking types/CollectionDetails.ts inside mpl_token_metadata
+# +++ Syntactically checking types/CreateMasterEditionArgs.ts inside mpl_token_metadata
+# +++ Syntactically checking types/CreateMetadataAccountArgs.ts inside mpl_token_metadata
+# +++ Syntactically checking types/CreateMetadataAccountArgsV2.ts inside mpl_token_metadata
+# +++ Syntactically checking types/CreateMetadataAccountArgsV3.ts inside mpl_token_metadata
+# +++ Syntactically checking types/Creator.ts inside mpl_token_metadata
+# +++ Syntactically checking types/Data.ts inside mpl_token_metadata
+# +++ Syntactically checking types/Key.ts inside mpl_token_metadata
+# +++ Syntactically checking types/DataV2.ts inside mpl_token_metadata
+# +++ Syntactically checking types/MintNewEditionFromMasterEditionViaTokenArgs.ts inside mpl_token_metadata
+# +++ Syntactically checking types/MintPrintingTokensViaTokenArgs.ts inside mpl_token_metadata
+# +++ Syntactically checking types/Reservation.ts inside mpl_token_metadata
+# +++ Syntactically checking types/ReservationV1.ts inside mpl_token_metadata
+# +++ Syntactically checking types/SetCollectionSizeArgs.ts inside mpl_token_metadata
+# +++ Syntactically checking types/SetReservationListArgs.ts inside mpl_token_metadata
+# +++ Syntactically checking types/TokenStandard.ts inside mpl_token_metadata
+# +++ Syntactically checking types/UpdateMetadataAccountArgs.ts inside mpl_token_metadata
+# +++ Syntactically checking types/UpdateMetadataAccountArgsV2.ts inside mpl_token_metadata
+# +++ Syntactically checking types/UseMethod.ts inside mpl_token_metadata
+# +++ Syntactically checking types/Uses.ts inside mpl_token_metadata
+# +++ Syntactically checking types/UtilizeArgs.ts inside mpl_token_metadata
+# +++ Syntactically checking types/index.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/ApproveCollectionAuthority.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/ApproveUseAuthority.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/BurnNft.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/ConvertMasterEditionV1ToV2.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/CreateMasterEdition.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/CreateMasterEditionV3.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/CreateMetadataAccount.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/CreateMetadataAccountV2.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/CreateMetadataAccountV3.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/DeprecatedCreateMasterEdition.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/DeprecatedCreateReservationList.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/DeprecatedMintNewEditionFromMasterEditionViaPrintingToken.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/DeprecatedMintPrintingTokens.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/DeprecatedMintPrintingTokensViaToken.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/DeprecatedSetReservationList.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/FreezeDelegatedAccount.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/MintNewEditionFromMasterEditionViaToken.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/MintNewEditionFromMasterEditionViaVaultProxy.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/PuffMetadata.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/RemoveCreatorVerification.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/RevokeCollectionAuthority.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/RevokeUseAuthority.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/SetAndVerifyCollection.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/SetAndVerifySizedCollectionItem.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/SetCollectionSize.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/SetTokenStandard.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/SignMetadata.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/ThawDelegatedAccount.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/UnverifyCollection.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/UnverifySizedCollectionItem.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/UpdateMetadataAccount.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/UpdateMetadataAccountV2.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/UpdatePrimarySaleHappenedViaToken.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/Utilize.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/VerifyCollection.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/VerifySizedCollectionItem.ts inside mpl_token_metadata
+# +++ Syntactically checking instructions/index.ts inside mpl_token_metadata
+# +++ Running index.ts inside mpl_token_metadata
+# +++ Running accounts/index.ts inside mpl_token_metadata
+# +++ Running errors/index.ts inside mpl_token_metadata
+# +++ Running types/index.ts inside mpl_token_metadata
+# +++ Running instructions/index.ts inside mpl_token_metadata
+# renders type correct SDK for nft_candy_machine_v1
+Writing instructions to directory: dist/test/utils/output/nft_candy_machine_v1/generated/instructions
+Writing accounts to directory: dist/test/utils/output/nft_candy_machine_v1/generated/accounts
+Writing types to directory: dist/test/utils/output/nft_candy_machine_v1/generated/types
+Writing errors to directory: dist/test/utils/output/nft_candy_machine_v1/generated/errors
+ok 7 Verifying types with tsc
+# +++ Syntactically checking index.ts inside nft_candy_machine_v1
+# +++ Syntactically checking accounts/CandyMachine.ts inside nft_candy_machine_v1
+# +++ Syntactically checking accounts/Config.ts inside nft_candy_machine_v1
+# +++ Syntactically checking accounts/index.ts inside nft_candy_machine_v1
+# +++ Syntactically checking errors/index.ts inside nft_candy_machine_v1
+# +++ Syntactically checking types/CandyMachineData.ts inside nft_candy_machine_v1
+# +++ Syntactically checking types/ConfigData.ts inside nft_candy_machine_v1
+# +++ Syntactically checking types/ConfigLine.ts inside nft_candy_machine_v1
+# +++ Syntactically checking types/Creator.ts inside nft_candy_machine_v1
+# +++ Syntactically checking types/index.ts inside nft_candy_machine_v1
+# +++ Syntactically checking instructions/addConfigLines.ts inside nft_candy_machine_v1
+# +++ Syntactically checking instructions/index.ts inside nft_candy_machine_v1
+# +++ Syntactically checking instructions/initializeConfig.ts inside nft_candy_machine_v1
+# +++ Syntactically checking instructions/initializeCandyMachine.ts inside nft_candy_machine_v1
+# +++ Syntactically checking instructions/mintNft.ts inside nft_candy_machine_v1
+# +++ Syntactically checking instructions/updateAuthority.ts inside nft_candy_machine_v1
+# +++ Syntactically checking instructions/updateCandyMachine.ts inside nft_candy_machine_v1
+# +++ Syntactically checking instructions/withdrawFunds.ts inside nft_candy_machine_v1
+# +++ Running index.ts inside nft_candy_machine_v1
+# +++ Running accounts/index.ts inside nft_candy_machine_v1
+# +++ Running errors/index.ts inside nft_candy_machine_v1
+# +++ Running instructions/index.ts inside nft_candy_machine_v1
+# +++ Running types/index.ts inside nft_candy_machine_v1
+# renders type correct SDK for nft-packs
+Writing instructions to directory: dist/test/utils/output/nft-packs/generated/instructions
+Writing accounts to directory: dist/test/utils/output/nft-packs/generated/accounts
+Writing types to directory: dist/test/utils/output/nft-packs/generated/types
+Writing errors to directory: dist/test/utils/output/nft-packs/generated/errors
+ok 8 Verifying types with tsc
+# +++ Syntactically checking index.ts inside nft-packs
+# +++ Syntactically checking accounts/PackCard.ts inside nft-packs
+# +++ Syntactically checking accounts/PackConfig.ts inside nft-packs
+# +++ Syntactically checking accounts/PackSet.ts inside nft-packs
+# +++ Syntactically checking accounts/PackVoucher.ts inside nft-packs
+# +++ Syntactically checking accounts/ProvingProcess.ts inside nft-packs
+# +++ Syntactically checking accounts/index.ts inside nft-packs
+# +++ Syntactically checking errors/index.ts inside nft-packs
+# +++ Syntactically checking instructions/Activate.ts inside nft-packs
+# +++ Syntactically checking instructions/AddCardToPack.ts inside nft-packs
+# +++ Syntactically checking instructions/AddVoucherToPack.ts inside nft-packs
+# +++ Syntactically checking instructions/ClaimPack.ts inside nft-packs
+# +++ Syntactically checking instructions/CleanUp.ts inside nft-packs
+# +++ Syntactically checking instructions/ClosePack.ts inside nft-packs
+# +++ Syntactically checking instructions/Deactivate.ts inside nft-packs
+# +++ Syntactically checking instructions/DeletePack.ts inside nft-packs
+# +++ Syntactically checking instructions/DeletePackCard.ts inside nft-packs
+# +++ Syntactically checking instructions/DeletePackConfig.ts inside nft-packs
+# +++ Syntactically checking instructions/DeletePackVoucher.ts inside nft-packs
+# +++ Syntactically checking instructions/EditPack.ts inside nft-packs
+# +++ Syntactically checking instructions/InitPack.ts inside nft-packs
+# +++ Syntactically checking instructions/RequestCardForRedeem.ts inside nft-packs
+# +++ Syntactically checking instructions/TransferPackAuthority.ts inside nft-packs
+# +++ Syntactically checking instructions/index.ts inside nft-packs
+# +++ Syntactically checking types/AccountType.ts inside nft-packs
+# +++ Syntactically checking types/AddCardToPackArgs.ts inside nft-packs
+# +++ Syntactically checking types/ClaimPackArgs.ts inside nft-packs
+# +++ Syntactically checking types/CleanUpActions.ts inside nft-packs
+# +++ Syntactically checking types/EditPackSetArgs.ts inside nft-packs
+# +++ Syntactically checking types/InitPackSetArgs.ts inside nft-packs
+# +++ Syntactically checking types/PackDistributionType.ts inside nft-packs
+# +++ Syntactically checking types/PackSetState.ts inside nft-packs
+# +++ Syntactically checking types/RequestCardToRedeemArgs.ts inside nft-packs
+# +++ Syntactically checking types/index.ts inside nft-packs
+# +++ Running index.ts inside nft-packs
+# +++ Running errors/index.ts inside nft-packs
+# +++ Running types/index.ts inside nft-packs
+# +++ Running accounts/index.ts inside nft-packs
+# +++ Running instructions/index.ts inside nft-packs
+# renders type correct SDK for shank-tictactoe
+not ok 9 Error: Unsupported type u32 when parsing discriminant for instruction InitializeDashboard
+  ---
+    operator: error
+    stack: |-
+      Error: Unsupported type u32 when parsing discriminant for instruction InitializeDashboard
+          at InstructionDiscriminator.mapStringToIdlType (/home/fzzyyti/repos/solita/dist/src/instruction-discriminator.js:44:19)
+          at InstructionDiscriminator.getField (/home/fzzyyti/repos/solita/dist/src/instruction-discriminator.js:19:29)
+          at InstructionRenderer.renderDataStruct (/home/fzzyyti/repos/solita/dist/src/render-instruction.js:276:96)
+          at InstructionRenderer.render (/home/fzzyyti/repos/solita/dist/src/render-instruction.js:301:37)
+          at renderInstruction (/home/fzzyyti/repos/solita/dist/src/render-instruction.js:355:21)
+          at Solita.renderCode (/home/fzzyyti/repos/solita/dist/src/solita.js:163:67)
+          at Solita.renderAndWriteTo (/home/fzzyyti/repos/solita/dist/src/solita.js:221:64)
+          at checkIdl (/home/fzzyyti/repos/solita/dist/test/utils/check-idl.js:17:15)
+          at Test.<anonymous> (/home/fzzyyti/repos/solita/dist/test/integration/contracts.js:131:40)
+          at Test.run (/home/fzzyyti/repos/solita/node_modules/tape/lib/test.js:112:28)
+  ...
+# renders type correct SDK for shank-token-metadata
+Writing instructions to directory: dist/test/utils/output/shank-token-metadata/generated/instructions
+Writing accounts to directory: dist/test/utils/output/shank-token-metadata/generated/accounts
+Writing types to directory: dist/test/utils/output/shank-token-metadata/generated/types
+Writing errors to directory: dist/test/utils/output/shank-token-metadata/generated/errors
+ok 10 Verifying types with tsc
+# +++ Syntactically checking index.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/CollectionAuthorityRecord.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/Edition.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/EditionMarker.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/MasterEditionV1.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/MasterEditionV2.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/Metadata.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/ReservationListV1.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/ReservationListV2.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/UseAuthorityRecord.ts inside shank-token-metadata
+# +++ Syntactically checking accounts/index.ts inside shank-token-metadata
+# +++ Syntactically checking errors/index.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/ApproveCollectionAuthority.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/ApproveUseAuthority.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/ConvertMasterEditionV1ToV2.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/CreateMasterEdition.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/CreateMasterEditionV3.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/CreateMetadataAccount.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/CreateMetadataAccountV2.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/DeprecatedCreateMasterEdition.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/DeprecatedCreateReservationList.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/DeprecatedMintNewEditionFromMasterEditionViaPrintingToken.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/DeprecatedMintPrintingTokens.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/DeprecatedMintPrintingTokensViaToken.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/DeprecatedSetReservationList.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/FreezeDelegatedAccount.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/MintNewEditionFromMasterEditionViaToken.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/MintNewEditionFromMasterEditionViaVaultProxy.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/PuffMetadata.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/RemoveCreatorVerification.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/RevokeCollectionAuthority.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/RevokeUseAuthority.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/SetAndVerifyCollection.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/SignMetadata.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/ThawDelegatedAccount.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/UnverifyCollection.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/UpdateMetadataAccount.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/UpdateMetadataAccountV2.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/UpdatePrimarySaleHappenedViaToken.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/Utilize.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/VerifyCollection.ts inside shank-token-metadata
+# +++ Syntactically checking instructions/index.ts inside shank-token-metadata
+# +++ Syntactically checking types/ApproveUseAuthorityArgs.ts inside shank-token-metadata
+# +++ Syntactically checking types/Collection.ts inside shank-token-metadata
+# +++ Syntactically checking types/CreateMasterEditionArgs.ts inside shank-token-metadata
+# +++ Syntactically checking types/CreateMetadataAccountArgs.ts inside shank-token-metadata
+# +++ Syntactically checking types/CreateMetadataAccountArgsV2.ts inside shank-token-metadata
+# +++ Syntactically checking types/Creator.ts inside shank-token-metadata
+# +++ Syntactically checking types/Data.ts inside shank-token-metadata
+# +++ Syntactically checking types/DataV2.ts inside shank-token-metadata
+# +++ Syntactically checking types/Key.ts inside shank-token-metadata
+# +++ Syntactically checking types/MintNewEditionFromMasterEditionViaTokenArgs.ts inside shank-token-metadata
+# +++ Syntactically checking types/MintPrintingTokensViaTokenArgs.ts inside shank-token-metadata
+# +++ Syntactically checking types/Reservation.ts inside shank-token-metadata
+# +++ Syntactically checking types/ReservationV1.ts inside shank-token-metadata
+# +++ Syntactically checking types/SetReservationListArgs.ts inside shank-token-metadata
+# +++ Syntactically checking types/TokenStandard.ts inside shank-token-metadata
+# +++ Syntactically checking types/UpdateMetadataAccountArgs.ts inside shank-token-metadata
+# +++ Syntactically checking types/UpdateMetadataAccountArgsV2.ts inside shank-token-metadata
+# +++ Syntactically checking types/UseMethod.ts inside shank-token-metadata
+# +++ Syntactically checking types/Uses.ts inside shank-token-metadata
+# +++ Syntactically checking types/UtilizeArgs.ts inside shank-token-metadata
+# +++ Syntactically checking types/index.ts inside shank-token-metadata
+# +++ Running index.ts inside shank-token-metadata
+# +++ Running errors/index.ts inside shank-token-metadata
+# +++ Running accounts/index.ts inside shank-token-metadata
+# +++ Running instructions/index.ts inside shank-token-metadata
+# +++ Running types/index.ts inside shank-token-metadata
+ok 11 Code inside types/Data.ts matches /FixableBeetArgsStruct<\s*Data\s*>/
+ok 12 Code inside instructions/CreateMetadataAccount.ts matches /FixableBeetArgsStruct<\s*CreateMetadataAccountInstructionArgs/
+# renders type correct SDK for shank-token-vault
+Writing instructions to directory: dist/test/utils/output/shank-token-vault/generated/instructions
+Writing accounts to directory: dist/test/utils/output/shank-token-vault/generated/accounts
+Writing types to directory: dist/test/utils/output/shank-token-vault/generated/types
+ok 13 Verifying types with tsc
+# +++ Syntactically checking index.ts inside shank-token-vault
+# +++ Syntactically checking accounts/ExternalPriceAccount.ts inside shank-token-vault
+# +++ Syntactically checking accounts/SafetyDepositBox.ts inside shank-token-vault
+# +++ Syntactically checking accounts/Vault.ts inside shank-token-vault
+# +++ Syntactically checking accounts/index.ts inside shank-token-vault
+# +++ Syntactically checking instructions/ActivateVault.ts inside shank-token-vault
+# +++ Syntactically checking instructions/AddSharesToTreasury.ts inside shank-token-vault
+# +++ Syntactically checking instructions/AddTokenToInactiveVault.ts inside shank-token-vault
+# +++ Syntactically checking instructions/CombineVault.ts inside shank-token-vault
+# +++ Syntactically checking instructions/InitVault.ts inside shank-token-vault
+# +++ Syntactically checking instructions/MintFractionalShares.ts inside shank-token-vault
+# +++ Syntactically checking instructions/RedeemShares.ts inside shank-token-vault
+# +++ Syntactically checking instructions/SetAuthority.ts inside shank-token-vault
+# +++ Syntactically checking instructions/UpdateExternalPriceAccount.ts inside shank-token-vault
+# +++ Syntactically checking instructions/WithdrawSharesFromTreasury.ts inside shank-token-vault
+# +++ Syntactically checking instructions/WithdrawTokenFromSafetyDepositBox.ts inside shank-token-vault
+# +++ Syntactically checking instructions/index.ts inside shank-token-vault
+# +++ Syntactically checking types/AmountArgs.ts inside shank-token-vault
+# +++ Syntactically checking types/InitVaultArgs.ts inside shank-token-vault
+# +++ Syntactically checking types/Key.ts inside shank-token-vault
+# +++ Syntactically checking types/MintEditionProxyArgs.ts inside shank-token-vault
+# +++ Syntactically checking types/NumberOfShareArgs.ts inside shank-token-vault
+# +++ Syntactically checking types/VaultState.ts inside shank-token-vault
+# +++ Syntactically checking types/index.ts inside shank-token-vault
+# +++ Running index.ts inside shank-token-vault
+# +++ Running accounts/index.ts inside shank-token-vault
+# +++ Running instructions/index.ts inside shank-token-vault
+# +++ Running types/index.ts inside shank-token-vault
+# renders type correct SDK for feat-account-padding
+Writing accounts to directory: dist/test/utils/output/feat-account-padding/generated/accounts
+ok 14 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-account-padding
+# +++ Syntactically checking accounts/StructAccountWithPadding.ts inside feat-account-padding
+# +++ Syntactically checking accounts/index.ts inside feat-account-padding
+# +++ Running index.ts inside feat-account-padding
+# +++ Running accounts/index.ts inside feat-account-padding
+# renders type correct SDK for feat-aliases
+Writing instructions to directory: dist/test/utils/output/feat-aliases/generated/instructions
+Writing accounts to directory: dist/test/utils/output/feat-aliases/generated/accounts
+Writing types to directory: dist/test/utils/output/feat-aliases/generated/types
+Writing errors to directory: dist/test/utils/output/feat-aliases/generated/errors
+ok 15 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-aliases
+# +++ Syntactically checking accounts/ListingConfig.ts inside feat-aliases
+# +++ Syntactically checking accounts/index.ts inside feat-aliases
+# +++ Syntactically checking errors/index.ts inside feat-aliases
+# +++ Syntactically checking instructions/index.ts inside feat-aliases
+# +++ Syntactically checking instructions/sell.ts inside feat-aliases
+# +++ Syntactically checking types/Bid.ts inside feat-aliases
+# +++ Syntactically checking types/index.ts inside feat-aliases
+# +++ Running index.ts inside feat-aliases
+# +++ Running accounts/index.ts inside feat-aliases
+# +++ Running types/index.ts inside feat-aliases
+# +++ Running errors/index.ts inside feat-aliases
+# +++ Running instructions/index.ts inside feat-aliases
+# renders type correct SDK for feat-data-enum
+Writing instructions to directory: dist/test/utils/output/feat-data-enum/generated/instructions
+Writing accounts to directory: dist/test/utils/output/feat-data-enum/generated/accounts
+Writing types to directory: dist/test/utils/output/feat-data-enum/generated/types
+ok 16 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-data-enum
+# +++ Syntactically checking accounts/BucketStateV3.ts inside feat-data-enum
+# +++ Syntactically checking accounts/index.ts inside feat-data-enum
+# +++ Syntactically checking types/CollectionInfo.ts inside feat-data-enum
+# +++ Syntactically checking types/index.ts inside feat-data-enum
+# +++ Syntactically checking instructions/createBucket.ts inside feat-data-enum
+# +++ Syntactically checking instructions/index.ts inside feat-data-enum
+# +++ Running index.ts inside feat-data-enum
+# +++ Running accounts/index.ts inside feat-data-enum
+# +++ Running instructions/index.ts inside feat-data-enum
+# +++ Running types/index.ts inside feat-data-enum
+# renders type correct SDK for feat-fix-anchor-maps
+Discovered an incorrectly defined map 'HashMap<String,u64>' as part of the IDL.
+Solita will attempt to fix this type, but you should inform the authors of the tool that generated the IDL about this issue
+Discovered an incorrectly defined map 'HashMap<String,DataItem>' as part of the IDL.
+Solita will attempt to fix this type, but you should inform the authors of the tool that generated the IDL about this issue
+Discovered an incorrectly defined map 'BTreeMap<u8,i128>' as part of the IDL.
+Solita will attempt to fix this type, but you should inform the authors of the tool that generated the IDL about this issue
+Writing types to directory: dist/test/utils/output/feat-fix-anchor-maps/generated/types
+ok 17 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-fix-anchor-maps
+# +++ Syntactically checking types/DataItem.ts inside feat-fix-anchor-maps
+# +++ Syntactically checking types/MapsStruct.ts inside feat-fix-anchor-maps
+# +++ Syntactically checking types/index.ts inside feat-fix-anchor-maps
+# +++ Running index.ts inside feat-fix-anchor-maps
+# +++ Running types/index.ts inside feat-fix-anchor-maps
+# renders type correct SDK for feat-mixed-enums+custom-types
+Writing types to directory: dist/test/utils/output/feat-mixed-enums+custom-types/generated/types
+ok 18 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-mixed-enums+custom-types
+# +++ Syntactically checking types/AddCardToPackArgs.ts inside feat-mixed-enums+custom-types
+# +++ Syntactically checking types/ClaimPackArgs.ts inside feat-mixed-enums+custom-types
+# +++ Syntactically checking types/EditPackSetArgs.ts inside feat-mixed-enums+custom-types
+# +++ Syntactically checking types/InitPackSetArgs.ts inside feat-mixed-enums+custom-types
+# +++ Syntactically checking types/NFTPacksInstruction.ts inside feat-mixed-enums+custom-types
+# +++ Syntactically checking types/PackDistributionType.ts inside feat-mixed-enums+custom-types
+# +++ Syntactically checking types/RequestCardToRedeemArgs.ts inside feat-mixed-enums+custom-types
+# +++ Syntactically checking types/index.ts inside feat-mixed-enums+custom-types
+# +++ Running index.ts inside feat-mixed-enums+custom-types
+# +++ Running types/index.ts inside feat-mixed-enums+custom-types
+# renders type correct SDK for feat-mixed-enums
+Writing types to directory: dist/test/utils/output/feat-mixed-enums/generated/types
+ok 19 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-mixed-enums
+# +++ Syntactically checking types/CleanUpActions.ts inside feat-mixed-enums
+# +++ Syntactically checking types/index.ts inside feat-mixed-enums
+# +++ Running index.ts inside feat-mixed-enums
+# +++ Running types/index.ts inside feat-mixed-enums
+# renders type correct SDK for feat-tuples
+Writing types to directory: dist/test/utils/output/feat-tuples/generated/types
+ok 20 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-tuples
+# +++ Syntactically checking types/AccountType.ts inside feat-tuples
+# +++ Syntactically checking types/index.ts inside feat-tuples
+# +++ Syntactically checking types/PackConfig.ts inside feat-tuples
+# +++ Running index.ts inside feat-tuples
+# +++ Running types/index.ts inside feat-tuples
+# renders type correct SDK for feat-collections-accounts
+Writing instructions to directory: dist/test/utils/output/feat-collections-accounts/generated/instructions
+ok 21 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-collections-accounts
+# +++ Syntactically checking instructions/index.ts inside feat-collections-accounts
+# +++ Syntactically checking instructions/mockLiquidateDex.ts inside feat-collections-accounts
+# +++ Running index.ts inside feat-collections-accounts
+# +++ Running instructions/index.ts inside feat-collections-accounts
+# renders type correct SDK for feat-sets
+Writing types to directory: dist/test/utils/output/feat-sets/generated/types
+ok 22 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-sets
+# +++ Syntactically checking types/MultipleBTreeSetsStruct.ts inside feat-sets
+# +++ Syntactically checking types/MultipleHashSetsStruct.ts inside feat-sets
+# +++ Syntactically checking types/NestedSetsStruct.ts inside feat-sets
+# +++ Syntactically checking types/OneBTreeSetStruct.ts inside feat-sets
+# +++ Syntactically checking types/OneHashSetStruct.ts inside feat-sets
+# +++ Syntactically checking types/index.ts inside feat-sets
+# +++ Running index.ts inside feat-sets
+# +++ Running types/index.ts inside feat-sets
+# renders type correct SDK for feat-optional-accounts
+Writing instructions to directory: dist/test/utils/output/feat-optional-accounts/generated/instructions
+ok 23 Verifying types with tsc
+# +++ Syntactically checking index.ts inside feat-optional-accounts
+# +++ Syntactically checking instructions/CloseThing.ts inside feat-optional-accounts
+# +++ Syntactically checking instructions/CreateThingWithOptional.ts inside feat-optional-accounts
+# +++ Syntactically checking instructions/CreateThingWithOptionalDefaulting.ts inside feat-optional-accounts
+# +++ Syntactically checking instructions/index.ts inside feat-optional-accounts
+# +++ Running index.ts inside feat-optional-accounts
+# +++ Running instructions/index.ts inside feat-optional-accounts
+# renders type correct SDK for issue-empty-accounts
+Writing instructions to directory: dist/test/utils/output/issue-empty-accounts/generated/instructions
+Writing types to directory: dist/test/utils/output/issue-empty-accounts/generated/types
+ok 24 Verifying types with tsc
+# +++ Syntactically checking index.ts inside issue-empty-accounts
+# +++ Syntactically checking instructions/CompensateWinner.ts inside issue-empty-accounts
+# +++ Syntactically checking instructions/index.ts inside issue-empty-accounts
+# +++ Syntactically checking types/CompensateWinnerArgs.ts inside issue-empty-accounts
+# +++ Syntactically checking types/index.ts inside issue-empty-accounts
+# +++ Running index.ts inside issue-empty-accounts
+# +++ Running types/index.ts inside issue-empty-accounts
+# +++ Running instructions/index.ts inside issue-empty-accounts
+# renders type correct SDK for issue-missing-beet-import
+Writing instructions to directory: dist/test/utils/output/issue-missing-beet-import/generated/instructions
+Writing types to directory: dist/test/utils/output/issue-missing-beet-import/generated/types
+ok 25 Verifying types with tsc
+# +++ Syntactically checking index.ts inside issue-missing-beet-import
+# +++ Syntactically checking instructions/CompensateWinner.ts inside issue-missing-beet-import
+# +++ Syntactically checking instructions/index.ts inside issue-missing-beet-import
+# +++ Syntactically checking types/CompensateWinnerArgs.ts inside issue-missing-beet-import
+# +++ Syntactically checking types/index.ts inside issue-missing-beet-import
+# +++ Running index.ts inside issue-missing-beet-import
+# +++ Running instructions/index.ts inside issue-missing-beet-import
+# +++ Running types/index.ts inside issue-missing-beet-import
+
+1..25
+# tests 25
+# pass  24
+# fail  1
+
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
