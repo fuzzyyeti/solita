@@ -1,8 +1,5 @@
 import {
-  rustbinMatch,
   RustbinConfig,
-  RustbinMatchReturn,
-  ConfirmInstallArgs,
 } from '@metaplex-foundation/rustbin'
 import { spawn, SpawnOptionsWithoutStdio } from 'child_process'
 import {
@@ -90,16 +87,21 @@ async function handle(
 ) {
   const { programName, idlDir, sdkDir } = config
 
+  console.log("editing file");
   console.log("rustbinConfig", JSON.stringify(rustbinConfig));
-  const { fullPathToBinary, binVersion, libVersion }: RustbinMatchReturn =
-    await rustbinMatch(rustbinConfig, confirmAutoMessageLog)
+  const fullPathToBinary = rustbinConfig.rootDir + "/bin/" + rustbinConfig.binaryName;
+  console.log("path to binary",fullPathToBinary);
+    const binVersion = "0.0.1";
+    const libVersion = "0.0.1";
+  // const { fullPathToBinary, binVersion, libVersion }: RustbinMatchReturn =
+  //   await rustbinMatch(rustbinConfig, confirmAutoMessageLog)
 
-  if (binVersion == null) {
-    throw new Error(
-      `rustbin was unable to determine installed version ${rustbinConfig.binaryName}, it may ` +
-        `not have been installed correctly.`
-    )
-  }
+  // if (binVersion == null) {
+  //   throw new Error(
+  //     `rustbin was unable to determine installed version ${rustbinConfig.binaryName}, it may ` +
+  //       `not have been installed correctly.`
+  //   )
+  // }
 
   return new Promise<SolitaHandlerResult>((resolve, reject) => {
     const tool = path.basename(fullPathToBinary)
@@ -147,20 +149,20 @@ async function handle(
   })
 }
 
-function confirmAutoMessageLog({
-  binaryName,
-  libVersion,
-  libName,
-  binVersion,
-  fullPathToBinary,
-}: ConfirmInstallArgs) {
-  if (binVersion == null) {
-    logInfo(`No existing version found for ${binaryName}.`)
-  } else {
-    logInfo(`Version for ${binaryName}: ${binVersion}`)
-  }
-  logInfo(
-    `Will install version matching "${libName}: '${libVersion}'" to ${fullPathToBinary}`
-  )
-  return Promise.resolve(true)
-}
+// function confirmAutoMessageLog({
+//   binaryName,
+//   libVersion,
+//   libName,
+//   binVersion,
+//   fullPathToBinary,
+// }: ConfirmInstallArgs) {
+//   if (binVersion == null) {
+//     logInfo(`No existing version found for ${binaryName}.`)
+//   } else {
+//     logInfo(`Version for ${binaryName}: ${binVersion}`)
+//   }
+//   logInfo(
+//     `Will install version matching "${libName}: '${libVersion}'" to ${fullPathToBinary}`
+//   )
+//   return Promise.resolve(true)
+// }
